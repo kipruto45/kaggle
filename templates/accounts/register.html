@@ -1,9 +1,36 @@
+
 {% extends 'base.html' %}
 {% block content %}
-<h2>Register</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Register</button>
-</form>
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-sm mt-4">
+      <div class="card-body">
+        <h3 class="mb-3 text-center">Register</h3>
+        <form method="post" novalidate>
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="phone" class="form-label">Kenyan Phone Number</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="07XXXXXXXX or 01XXXXXXXX" required pattern="^(\+254|0)(7|1)\d{8}$">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password1" name="password1" required>
+          </div>
+          <div class="mb-3">
+            <label for="password2" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="password2" name="password2" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Send OTP</button>
+        </form>
+        <div class="text-center mt-3">
+          <a href="{% url 'accounts:login' %}">Already have an account? Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

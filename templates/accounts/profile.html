@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-7">
+    <div class="card shadow-sm mt-4">
+      <div class="card-body">
+        <h3 class="mb-3 text-center">Profile</h3>
+        <ul class="list-group mb-3">
+          <li class="list-group-item"><strong>Phone:</strong> {{ user.phone }}</li>
+          <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+          <li class="list-group-item"><strong>Competitions Joined:</strong> {{ competitions_joined }}</li>
+          <li class="list-group-item"><strong>Datasets Uploaded:</strong> {{ datasets_uploaded }}</li>
+          <li class="list-group-item"><strong>Rewards History:</strong> {{ rewards_history }}</li>
+          <li class="list-group-item"><strong>Leaderboard Rank:</strong> {{ leaderboard_rank }}</li>
+        </ul>
+        <div class="text-center">
+          <a href="{% url 'accounts:dashboard' %}" class="btn btn-outline-primary">Go to Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

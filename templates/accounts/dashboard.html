@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-10 col-lg-8">
+    <div class="card shadow-sm mt-4">
+      <div class="card-body">
+        <h3 class="mb-3 text-center">Dashboard</h3>
+        <div class="row g-3">
+          <div class="col-6 col-md-4">
+            <div class="card text-center bg-light">
+              <div class="card-body">
+                <i class="fas fa-trophy fa-2x mb-2 text-warning"></i>
+                <h5>Competitions</h5>
+                <p>{{ competitions_count }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="card text-center bg-light">
+              <div class="card-body">
+                <i class="fas fa-database fa-2x mb-2 text-success"></i>
+                <h5>Datasets</h5>
+                <p>{{ datasets_count }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="card text-center bg-light">
+              <div class="card-body">
+                <i class="fas fa-coins fa-2x mb-2 text-primary"></i>
+                <h5>Rewards</h5>
+                <p>{{ rewards_count }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 text-center">
+          <a href="{% url 'competitions:list' %}" class="btn btn-primary me-2">View Competitions</a>
+          <a href="{% url 'datasets:list' %}" class="btn btn-outline-success">Browse Datasets</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
