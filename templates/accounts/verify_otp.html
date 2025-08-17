@@ -1,10 +1,24 @@
+
 {% extends 'base.html' %}
 {% block content %}
-<h2>Verify OTP</h2>
-<form method="post">
-  {% csrf_token %}
-  <label for="otp">Enter OTP sent to your phone:</label>
-  <input type="text" name="otp" maxlength="6" required>
-  <button type="submit">Verify</button>
-</form>
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-sm mt-4">
+      <div class="card-body">
+        <h3 class="mb-3 text-center">Verify Phone Number</h3>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="otp" class="form-label">Enter 6-digit OTP sent via SMS</label>
+            <input type="text" class="form-control" id="otp" name="otp" maxlength="6" required pattern="\d{6}">
+          </div>
+          <button type="submit" class="btn btn-success w-100">Verify</button>
+        </form>
+        <div class="text-center mt-3">
+          <a href="{% url 'accounts:resend_otp' user.id %}">Resend OTP</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
