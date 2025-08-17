@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Available Datasets</h2>
+<ul>
+  {% for dataset in datasets %}
+    <li><strong>{{ dataset.title }}</strong> - {{ dataset.description|truncatewords:20 }}<br>
+      <a href="{{ dataset.file.url }}">Download</a>
+    </li>
+  {% empty %}
+    <li>No datasets available.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

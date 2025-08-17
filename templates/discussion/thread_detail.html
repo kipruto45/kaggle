@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ thread.title }}</h2>
+<ul>
+  {% for post in posts %}
+    <li><strong>{{ post.author.username }}</strong>: {{ post.content }} <small>({{ post.created_at }})</small></li>
+  {% empty %}
+    <li>No posts yet.</li>
+  {% endfor %}
+</ul>
+{% if user.is_authenticated %}
+<form method="post">
+  {% csrf_token %}
+  <textarea name="content" class="form-control mb-2" placeholder="Write your reply..." required></textarea>
+  <button type="submit" class="btn btn-primary">Post</button>
+</form>
+{% else %}
+<p><a href="/accounts/login/">Login</a> to post.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ competition.title }}</h2>
+<p>{{ competition.description }}</p>
+<p>Prize: KES {{ competition.prize }}</p>
+<p>Start: {{ competition.start_date }} | End: {{ competition.end_date }}</p>
+<p>Rules: {{ competition.rules }}</p>
+<a href="{% url 'competitions:submit' competition.pk %}" class="btn btn-success">Submit Solution</a>
+<h3>Leaderboard</h3>
+<ul>
+  {% for entry in leaderboard %}
+    <li>{{ entry.rank }}. {{ entry.submission.participant.username }} - {{ entry.score }}</li>
+  {% empty %}
+    <li>No submissions yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

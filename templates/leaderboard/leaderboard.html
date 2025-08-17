@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Leaderboard for {{ competition.title }}</h2>
+<ul>
+  {% for entry in entries %}
+    <li>{{ entry.rank }}. {{ entry.submission.participant.username }} - {{ entry.score }}</li>
+  {% empty %}
+    <li>No submissions yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Start a New Thread in {{ competition.title }}</h2>
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="title" placeholder="Thread title" required class="form-control mb-2">
+  <button type="submit" class="btn btn-success">Create Thread</button>
+</form>
+{% endblock %}

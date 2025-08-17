@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Competitions</h2>
+<a href="{% url 'competitions:create' %}" class="btn btn-primary mb-2">Host Competition</a>
+<ul>
+  {% for comp in competitions %}
+    <li><a href="{% url 'competitions:detail' comp.pk %}">{{ comp.title }}</a> - Prize: KES {{ comp.prize }}</li>
+  {% empty %}
+    <li>No competitions available.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
